@@ -1,11 +1,10 @@
 import java.util.*;
 
-public class Main {
 
-	private static ArrayList<Album> albums = new ArrayList<>();
+	
 
 	public static void main(String[] args) {
-
+		private static ArrayList<Album> albums = new ArrayList<>();
 		Album album = new Album("Album1", "DC");
 		
 		album.addSong("TNT",4.5);
@@ -27,8 +26,22 @@ public class Main {
 		albums.get(0).addToPlayList("lover", playlist_1);
 		
 		play(playlist_1);
+		
 
 	private static void play(LinkedList<Song> playlist) {
+		
+		Scanner sc = new Scanner(System.in);
+		boolean quit = false;
+		boolean forward = true;
+		ListIterator<Song> listIterator = playlist.listIterator();
+		
+		if(playlist.size() == 0) {
+			System.out.println("this has no song");
+		} else {
+			System.out.println("now playing" + listIterator.next().toString());
+			printMenu();
+		}
+	
 
 	}
 
@@ -50,5 +63,8 @@ public class Main {
 	}
 
 }
+
+
+
 
 
