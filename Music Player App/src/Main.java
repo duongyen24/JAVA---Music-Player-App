@@ -1,10 +1,10 @@
 import java.util.*;
 
-
-	
+public class Main {
+	private static ArrayList<Album> albums = new ArrayList<>();
 
 	public static void main(String[] args) {
-		private static ArrayList<Album> albums = new ArrayList<>();
+	
 		Album album = new Album("Album1", "DC");
 		
 		album.addSong("TNT",4.5);
@@ -21,6 +21,7 @@ import java.util.*;
 		albums.add(album);
 		
 		LinkedList<Song> playlist_1 = new LinkedList<>();
+		
 		albums.get(0).addToPlayList("highway", playlist_1);
 		albums.get(0).addToPlayList("tutor", playlist_1);
 		albums.get(0).addToPlayList("lover", playlist_1);
@@ -37,13 +38,66 @@ import java.util.*;
 		
 		if(playlist.size() == 0) {
 			System.out.println("this has no song");
-		} else {
+			
+		}
+		else {
 			System.out.println("now playing" + listIterator.next().toString());
 			printMenu();
 		}
-	
-
+		while (!quit) {
+			int action = sc.nextInt();
+			sc.nextLine();
+			
+			switch(action) {
+				case 0:
+					System.out.println("playlist complete");
+					quit = true;
+					break;
+				case 1:
+					if(!forward) {
+						if(listIterator.hasNext()) {
+							listIterator.next();
+						}
+						foward = true;
+					}
+					if(listIterator.hasNext()) {
+						System.out.println("now playing " + listIterator.next().toString());
+					}
+					else {
+						System.out.println(" no song avalable");
+						forward = false;
+						
+					}
+					break;
+				case 2:
+					if(forward) {
+						if(listIterator.hasPrevious()) {
+							listIterator.previous();
+						}
+						forward = false;
+					}
+					if(listIterator.hasPrevious()) {
+						System.out.println("now playing"+listIterator.previous().toString());
+						System.out.println("we are the first song");
+						forward = false;
+					}
+					break;
+				case 3:
+					if(forward) {
+						if(listIterator.hasPrevious()) {
+							System.out.println("now playing" + listIterator.previous().toString());
+							forward = false;
+						}
+					}
+				
+					
+					
+			}
+		}
+		
 	}
+
+	
 
 	private static void printMenu() {
 		System.out.println("options");
@@ -63,8 +117,4 @@ import java.util.*;
 	}
 
 }
-
-
-
-
 
