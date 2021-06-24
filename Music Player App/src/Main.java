@@ -7,16 +7,16 @@ public class Main {
 	
 		Album album = new Album("Album1", "DC");
 		
-		album.addSong("TNT",4.5);
-		album.addSong("highway",3.5);
-		album.addSong("dual",2.0);
+		album.addSong("TNT ",4.5);
+		album.addSong("highway ",3.5);
+		album.addSong("dual ",2.0);
 		albums.add(album);
 		
 		album = new Album("Album2", "Enimem");
 		
-		album.addSong("love yourself",4.5);
-		album.addSong("lose",3.5);
-		album.addSong("not afraid",2.0);
+		album.addSong("love yourself ",4.5);
+		album.addSong("lose ",3.5);
+		album.addSong("not afraid ",2.0);
 		
 		albums.add(album);
 		
@@ -27,7 +27,7 @@ public class Main {
 		albums.get(0).addToPlayList("lover", playlist_1);
 		
 		play(playlist_1);
-		
+	}
 
 	private static void play(LinkedList<Song> playlist) {
 		
@@ -58,7 +58,7 @@ public class Main {
 						if(listIterator.hasNext()) {
 							listIterator.next();
 						}
-						foward = true;
+						forward = true;
 					}
 					if(listIterator.hasNext()) {
 						System.out.println("now playing " + listIterator.next().toString());
@@ -86,17 +86,49 @@ public class Main {
 					if(forward) {
 						if(listIterator.hasPrevious()) {
 							System.out.println("now playing" + listIterator.previous().toString());
-							forward = false;
+	 						forward = false;
+						}
+						else {
+							System.out.println("at the start of list");
+						}
+					}else {
+						if(listIterator.hasNext()) {
+							System.out.println("now playing" + listIterator.next().toString());
+							forward = true;
+						}else {
+							System.out.println("reach to the end of list");
 						}
 					}
+					break;
+				case 4:
+					printList(playlist);
+					break;
+				case 5:
+					printMenu();
+					break;
+				case 6:
+					if( playlist.size() > 0) {
+						listIterator.remove();
+						if(listIterator.hasNext()) {
+							System.out.println("now playing"+ listIterator.next().toString());
+							forward = true;
+						}
+					}
+					else {
+						if(listIterator.hasPrevious()) {
+							System.out.println("now playing" + listIterator.previous().toString());
+						}
+					}
+					 
+					
 				
 					
 					
 			}
 		}
 		
+	
 	}
-
 	
 
 	private static void printMenu() {
@@ -117,4 +149,5 @@ public class Main {
 	}
 
 }
+
 
